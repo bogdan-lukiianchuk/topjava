@@ -9,8 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MealDaoImpl implements MealDao{
-    AtomicInteger count = new AtomicInteger(0);
-    private Map<Integer, Meal> mealMap = new ConcurrentHashMap<>();
+    private static final AtomicInteger count = new AtomicInteger(0);
+    private static final Map<Integer, Meal> mealMap = new ConcurrentHashMap<>();
 
     @Override
     public void add(Meal meal) {
