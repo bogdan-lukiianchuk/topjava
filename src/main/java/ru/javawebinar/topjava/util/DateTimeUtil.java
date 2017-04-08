@@ -18,4 +18,8 @@ public class DateTimeUtil {
     public static String toString(LocalDateTime ldt) {
         return ldt == null ? "" : ldt.format(DATE_TIME_FORMATTER);
     }
+
+    public static <V extends Comparable<V>> boolean isBetween1(V x, V min, V max) {
+        return x.compareTo(min)>=0 && x.compareTo(max)<=0;
+    }
 }

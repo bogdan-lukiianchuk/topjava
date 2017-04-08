@@ -1,11 +1,14 @@
 package ru.javawebinar.topjava.service;
 
+import ru.javawebinar.topjava.model.NamedEntity;
 import ru.javawebinar.topjava.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.javawebinar.topjava.repository.UserRepository;
+import ru.javawebinar.topjava.repository.mock.InMemoryUserRepositoryImpl;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import java.util.Comparator;
 import java.util.List;
 
 import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFound;
@@ -16,6 +19,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository repository;
+//    {
+//        repository = new InMemoryUserRepositoryImpl();
+//    }
 
     @Override
     public User save(User user) {
@@ -39,7 +45,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        return repository.getAll();
+        List<User> result = repository.getAll();
+        result.sort(Comparator.comparing(NamedEntity::getName));
+        return result;
     }
 
     @Override

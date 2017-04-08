@@ -1,4 +1,15 @@
 package ru.javawebinar.topjava.service;
 
+import ru.javawebinar.topjava.model.Meal;
+
+import java.util.Collection;
+
 public interface MealService {
+    Meal get(int id, int userId);
+
+    Collection<Meal> getAll(int userId);
+
+    Meal save(Meal meal);
+
+    boolean delete(int id, int userId);
 }
