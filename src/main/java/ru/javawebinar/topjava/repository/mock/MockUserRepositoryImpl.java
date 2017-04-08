@@ -13,19 +13,19 @@ public class MockUserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean delete(int id) {
-        LOG.info("delete " + id);
+        LOG.info("delete {}", id);
         return true;
     }
 
     @Override
     public User save(User user) {
-        LOG.info("save " + user);
+        LOG.info("save {}", user);
         return user;
     }
 
     @Override
     public User get(int id) {
-        LOG.info("get " + id);
+        LOG.info("get {}", id);
         return null;
     }
 
@@ -37,7 +37,7 @@ public class MockUserRepositoryImpl implements UserRepository {
 
     @Override
     public User getByEmail(String email) {
-        LOG.info("getByEmail " + email);
+        LOG.info("getByEmail {}", email);
         return null;
     }
 }
