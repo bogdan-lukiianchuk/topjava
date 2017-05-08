@@ -165,10 +165,10 @@
             <id>hsqldb</id>
             <dependencies>
                 <dependency>
-                    <groupId>org.hsqldb</groupId>
-                    <artifactId>hsqldb</artifactId>
-                    <version>2.3.4</version>
-                </dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>2.4.0</version>
+            </dependency>
             </dependencies>
         </profile>
         <profile>
