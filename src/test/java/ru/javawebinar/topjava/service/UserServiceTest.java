@@ -3,6 +3,8 @@ package ru.javawebinar.topjava.service;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -22,15 +24,8 @@ import java.util.Collections;
 
 import static ru.javawebinar.topjava.UserTestData.*;
 
-@ContextConfiguration({
-        "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
-})
-@RunWith(SpringRunner.class)
-@Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
-@ActiveProfiles(Profiles.ACTIVE_DB)
-public class UserServiceTest {
-
+public class UserServiceTest extends AbstractServiceTest{
+    private static final Logger LOG = LoggerFactory.getLogger(UserServiceTest.class);
     static {
         // Only for postgres driver logging
         // It uses java.util.logging and logged via jul-to-slf4j bridge
