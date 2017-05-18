@@ -1,11 +1,13 @@
 package ru.javawebinar.topjava.web.meal;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.service.MealService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
@@ -20,6 +22,11 @@ import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalTime;
 @Controller
 @RequestMapping(value = "/meals")
 public class JspMealController extends AbstractMealController {
+
+    @Autowired
+    public JspMealController(MealService service) {
+        super(service);
+    }
 
     @GetMapping("/delete")
     public String delete(HttpServletRequest request) {
@@ -62,6 +69,17 @@ public class JspMealController extends AbstractMealController {
         model.addAttribute("meals", super.getBetween(startDate, startTime, endDate, endTime));
         return "meals";
     }
+
+//        @GetMapping("/filter")
+//    public String getBetween(HttpServletRequest request, Model model) {
+//        LocalDate startDate = parseLocalDate(request.getParameter("startDate"));
+//        LocalDate endDate = parseLocalDate(request.getParameter("endDate"));
+//        LocalTime startTime = parseLocalTime(request.getParameter("startTime"));
+//        LocalTime endTime = parseLocalTime(request.getParameter("endTime"));
+//        model.addAttribute("meals", super.getBetween(startDate, startTime, endDate, endTime));
+//        return "meals";
+//    }
+
 
     private int getId(HttpServletRequest request) {
         String paramId = Objects.requireNonNull(request.getParameter("id"));
