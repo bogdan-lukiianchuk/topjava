@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="webjars/datatables/1.10.15/media/css/dataTables.bootstrap.min.css">
     <link rel="shortcut icon" href="resources/images/icon-meal.png">
 
+    <script type="text/javascript" src="resources/js/datatablesUtil.js" defer></script>
+    <script type="text/javascript" src="resources/js/userDatatables.js" defer></script>
     <!--http://stackoverflow.com/a/24070373/548473-->
     <script type="text/javascript" src="webjars/jquery/3.2.1/dist/jquery.min.js" defer></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" defer></script>
