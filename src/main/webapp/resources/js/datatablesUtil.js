@@ -20,7 +20,7 @@ function add() {
 
 function deleteRow(id) {
     $.ajax({
-        url: ajaxUrl + id,
+        url: ajaxUrl + id.slice(3),
         type: 'DELETE',
         success: function () {
             updateTable();
