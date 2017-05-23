@@ -71,4 +71,10 @@ public class UserServiceImpl implements UserService {
     public User getWithMeals(int id) {
         return checkNotFoundWithId(repository.getWithMeals(id), id);
     }
+
+    @CacheEvict(value = "users", allEntries = true)
+    @Override
+    public void setEnabled(int id, boolean enabled) {
+        repository.setEnabled(id, enabled);
+    }
 }

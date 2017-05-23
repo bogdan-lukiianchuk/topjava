@@ -115,4 +115,9 @@ public class JdbcUserRepositoryImpl implements UserRepository {
         }
         return u;
     }
+
+    @Override
+    public void setEnabled(int id, boolean enabled) {
+        throw new UnsupportedOperationException();
+    }
 }

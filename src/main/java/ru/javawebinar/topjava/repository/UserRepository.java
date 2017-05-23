@@ -21,4 +21,6 @@ public interface UserRepository {
     default User getWithMeals(int id){
         throw new UnsupportedOperationException();
     }
+
+    void setEnabled(int id, boolean enabled);
 }

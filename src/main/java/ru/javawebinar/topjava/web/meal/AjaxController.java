@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.to.MealWithExceed;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -14,12 +15,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ajax/meals")
-@SessionAttributes({"startDate", "startTime", "endDate", "endTime"})
+//@SessionAttributes({"startDate", "startTime", "endDate", "endTime"})
 public class AjaxController extends AbstractMealController {
-    @Override
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MealWithExceed> getAll() {
-        return super.getAll();
+    public List<MealWithExceed> getAll(HttpServletRequest request) {
+//        return super.getAll();
+        return super.getBetween(
+                (LocalDate) request.getSession().getAttribute("startDate"),
+                (LocalTime) request.getSession().getAttribute("startTime"),
+                (LocalDate) request.getSession().getAttribute("endDate"),
+                (LocalTime) request.getSession().getAttribute("endTime")
+                );
     }
 
     @Override
@@ -49,18 +56,24 @@ public class AjaxController extends AbstractMealController {
         throw new UnsupportedOperationException();
     }
 
-    @Override
-    @GetMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MealWithExceed> getBetween(
+    @PostMapping(value = "/filter")
+    public void filter(HttpServletRequest request,
             @RequestParam(value = "startDate", required = false) LocalDate startDate,
             @RequestParam(value = "startTime", required = false) LocalTime startTime,
             @RequestParam(value = "endDate", required = false) LocalDate endDate,
             @RequestParam(value = "endTime", required = false) LocalTime endTime) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("startDate", startDate);
-        modelAndView.addObject("startTime", startDate);
-        modelAndView.addObject("endDate", startDate);
-        modelAndView.addObject("endTime", startDate);
-        return super.getBetween(startDate, startTime, endDate, endTime);
+        request.getSession().setAttribute("startDate", startDate);
+        request.getSession().setAttribute("startTime", startTime);
+        request.getSession().setAttribute("endDate", endDate);
+        request.getSession().setAttribute("endTime", endTime);
     }
+
+    @PostMapping(value = "/filterClear")
+    public void filter(HttpServletRequest request) {
+        request.getSession().setAttribute("startDate", null);
+        request.getSession().setAttribute("startTime", null);
+        request.getSession().setAttribute("endDate", null);
+        request.getSession().setAttribute("endTime", null);
+    }
+
 }

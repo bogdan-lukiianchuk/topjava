@@ -8,6 +8,10 @@ $(function () {
         "info": true,
         "columns": [
             {
+                "data": "id",
+                "visible": false
+            },
+            {
                 "data": "name"
             },
             {
@@ -17,7 +21,15 @@ $(function () {
                 "data": "roles"
             },
             {
-                "data": "enabled"
+                "data": "enabled",
+                "type": "checkbox",
+                "render": function (data, type, full, meta) {
+                    if (data === true || data === "true"){
+                        return '<input type="checkbox" checked onchange="changeActive('+full.id+', '+false+')"/>';
+                    } else {
+                        return '<input type="checkbox" onchange="changeActive('+full.id+', '+true+')"/>';
+                    }
+                }
             },
             {
                 "data": "registered"
@@ -33,10 +45,25 @@ $(function () {
         ],
         "order": [
             [
-                0,
+                1,
                 "asc"
             ]
         ]
     });
     makeEditable();
 });
+
+function changeActive(id, newstate) {
+    $.ajax({
+        url: ajaxUrl + id,
+        type: 'POST',
+        data: {
+            "enabled": newstate
+        },
+        success: function () {
+            updateTable();
+            successNoty('User Enabled/Disabled');
+        }
+    });
+
+}

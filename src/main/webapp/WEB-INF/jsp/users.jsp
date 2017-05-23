@@ -23,6 +23,7 @@
                 <table class="table table-striped display" id="datatable">
                     <thead>
                     <tr>
+                        <th>Id</th>
                         <th><spring:message code="users.name"/></th>
                         <th><spring:message code="users.email"/></th>
                         <th><spring:message code="users.roles"/></th>
@@ -35,12 +36,12 @@
                     <c:forEach items="${users}" var="user">
                         <jsp:useBean id="user" scope="page" type="ru.javawebinar.topjava.model.User"/>
                         <tr>
+                            <td>${user.id}</td>
                             <td><c:out value="${user.name}"/></td>
                             <td><a href="mailto:${user.email}">${user.email}</a></td>
                             <td>${user.roles}</td>
                             <td>
-                                <input type="checkbox"
-                                       <c:if test="${user.enabled}">checked</c:if> id="${user.id}"/>
+                                ${user.enabled}
                             </td>
                             <td><fmt:formatDate value="${user.registered}" pattern="dd-MMMM-yyyy"/></td>
                             <td><a class="btn btn-xs btn-primary">

@@ -13,6 +13,7 @@ function makeEditable() {
     });
 }
 
+//just set id = null
 function add() {
     $('#id').val(null);
     $('#editRow').modal();

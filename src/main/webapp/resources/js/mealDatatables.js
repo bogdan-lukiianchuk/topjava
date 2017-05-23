@@ -39,3 +39,28 @@ $(function () {
     });
     makeEditable();
 });
+
+function filter() {
+    var form = $('#filterForm');
+    $.ajax({
+        url: ajaxUrl+'filter/',
+        type: 'POST',
+        data: form.serialize(),
+        success: function () {
+            updateTable();
+            successNoty('Filter applied')
+        }
+    });
+}
+
+function clearFilter() {
+    var form = $('#filterForm');
+    $.ajax({
+        url: ajaxUrl+'filterClear',
+        type: 'POST',
+        success: function () {
+            updateTable();
+            successNoty('Filter cleared')
+        }
+    });
+}
