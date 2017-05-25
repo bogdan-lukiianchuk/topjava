@@ -35,8 +35,23 @@ function updateTable() {
         datatableApi.clear();
         $.each(data, function (key, item) {
             datatableApi.row.add(item);
+            // $("tr .row").css({"background-color": "yellow"})
         });
         datatableApi.draw();
+        var indexes = datatableApi.rows().eq( 0 ).filter( function (rowIdx) {
+                return datatableApi.cell(rowIdx, 4).data()===false;
+            });
+        datatableApi.rows( indexes )
+            .nodes()
+            .to$()
+            .addClass( 'info' );
+/*
+        datatableApi.rows().every( function (rowIdx, p2, p3) {
+            var data = this.data();
+            this.css({"background-color": "yellow"});
+        });
+*/
+        // datatableApi.draw();
     });
 }
 
