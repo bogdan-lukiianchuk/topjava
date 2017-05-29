@@ -47,8 +47,8 @@ public class MealsUtil {
         return new MealWithExceed(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceeded);
     }
 
-    public static Meal createNewFromTo(MealTo mealTo) {
-        Meal meal = new Meal(mealTo.getDateTime(), mealTo.getDescription(), mealTo.getCalories());
+    public static Meal createFromTo(MealTo mealTo) {
+        Meal meal = new Meal(mealTo.getId(), mealTo.getDateTime(), mealTo.getDescription(), mealTo.getCalories());
         return meal;
     }
 }

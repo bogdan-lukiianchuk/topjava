@@ -8,6 +8,8 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class MealTo {
+    private Integer id;
+
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
@@ -15,8 +17,9 @@ public class MealTo {
     @NotBlank
     private String description;
 
+    @NotNull
     @Range(min = 10, max = 5000)
-    private int calories;
+    private Integer calories;
 
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -34,15 +37,23 @@ public class MealTo {
         this.description = description;
     }
 
-    public int getCalories() {
+    public Integer getCalories() {
         return calories;
     }
 
-    public void setCalories(int calories) {
+    public void setCalories(Integer calories) {
         this.calories = calories;
     }
 
     public boolean isNew() {
-        return true;
+        return id == null;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
