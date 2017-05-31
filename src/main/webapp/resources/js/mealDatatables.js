@@ -25,7 +25,12 @@ $(function () {
         "info": true,
         "columns": [
             {
-                "data": "dateTime"
+                "data": "dateTime",
+                "render": function(data) {
+                    //moment.js required
+                    return moment(data).format('LLL');
+                },
+                "type": "moment-js-date"
             },
             {
                 "data": "description"
