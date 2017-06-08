@@ -40,7 +40,7 @@ public class User extends NamedEntity {
 
     @Column(name = "password", nullable = false)
     @NotBlank
-    @Length(min = 5)
+    @Length(min = 5, max = 64)
     @JsonView(View.JsonREST.class)
     private String password;
 

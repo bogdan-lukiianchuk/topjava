@@ -19,6 +19,7 @@
                     </button>
                 </sec:authorize>
             </form:form>
+            <a href="?lang=en">en</a> | <a href="?lang=ru">ru</a>
         </div>
     </div>
 </div>
