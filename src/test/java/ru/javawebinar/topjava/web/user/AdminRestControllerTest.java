@@ -1,11 +1,17 @@
 package ru.javawebinar.topjava.web.user;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.topjava.TestUtil;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
+import ru.javawebinar.topjava.util.exception.ErrorInfo;
 import ru.javawebinar.topjava.web.AbstractControllerTest;
 import ru.javawebinar.topjava.web.json.JsonUtil;
 
@@ -108,6 +114,18 @@ public class AdminRestControllerTest extends AbstractControllerTest {
 
         MATCHER.assertEquals(expected, returned);
         MATCHER.assertCollectionEquals(Arrays.asList(ADMIN, expected, USER), userService.getAll());
+    }
+
+    @Test
+    @Transactional(propagation = Propagation.NEVER)
+    public void testCreateDuplicateEmail() throws Exception {
+        User duplicateEmailUser = new User(null, "New", USER.getEmail(), "newPass", 2300, Role.ROLE_USER);
+//        ErrorInfo expected = new ErrorInfo("", "", "");
+        ResultActions action = mockMvc.perform(post(REST_URL)
+        .contentType(MediaType.APPLICATION_JSON)
+        .with(userHttpBasic(ADMIN))
+        .content(JsonUtil.writeValue(duplicateEmailUser))).andExpect(status().is(HttpStatus.CONFLICT.value()));
+
     }
 
     @Test

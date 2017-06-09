@@ -85,6 +85,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
     @Test
     public void testCreate() throws Exception {
         Meal created = getCreated();
+        created.setUser(ADMIN);
         ResultActions action = mockMvc.perform(post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(created))
