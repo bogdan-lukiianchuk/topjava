@@ -31,9 +31,9 @@ public class User extends NamedEntity {
     public static final String ALL_SORTED = "User.getAllSorted";
 
     @Column(name = "email", nullable = false, unique = true)
+    @SafeHtml
     @Email
     @NotBlank
-    @SafeHtml
     private String email;
 
     @Column(name = "password", nullable = false)
