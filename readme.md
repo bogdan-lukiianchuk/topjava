@@ -15,28 +15,26 @@ Hibernate, делаем конверторы для типов LocalDateTime (Ja
 
 #### <a href="http://topjava.herokuapp.com/" target=_blank>Демо разрабатываемого приложения</a>
 
-## План проекта (ссылки на некоторые темы открыты для просмотра)
+## План проекта
 ### Архитектура проекта. Персистентность.
--  <a href="https://drive.google.com/file/d/0B9Ye2auQ_NsFSUNrdVc0bDZuX2s">Системы управления версиями</a>
--  <a href="http://www.youtube.com/watch?v=_PDIVhEs6TM">Java 8: Lambda</a>, Stream API
+-  Системы управления версиями
+-  Java 8: Lambda, Stream API
 -  Обзор используемых в проекте технологий и инструментов.
--  <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFSlZMTXBJRXJpakU">Инструмент сборки Maven.</a>
+-  Maven
 -  WAR. Веб-контейнер Tomcat. Сервлеты.
 -  Логирование.
 -  Обзор стандартных библиотек. Apache Commons, Guava
 -  Слои приложения. Создание каркаса приложения.
--  Обзор Spring Framework. Spring Context.
+-  Spring Framework. Spring Context.
 -  Тестирование через JUnit.
--  <a href="https://drive.google.com/file/d/0B9Ye2auQ_NsFai1veG9qaFZlZ2s/view">Spring Test</a>
+-  Spring Test
 -  Базы данных. PostgreSQL. Обзор NoSQL и Java persistence solution без ORM.
--  Настройка Database в IDEA.
 -  Скрипты инициализации базы. Spring Jdbc Template.
--  <a href="https://drive.google.com/file/d/0B9Ye2auQ_NsFU0Z2R190eDllYmM/view">Spring: инициализация и популирование DB</a>
 -  ORM. Hibernate. JPA.
 -  Поддержка HSQLDB
 -  Транзакции
 -  Профили Maven и Spring
--  <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFTWJOdHduOWtNcTA">Пул коннектов</a>
+-  Пул коннектов
 -  Spring Data JPA
 -  Кэш Hibernate
 
@@ -60,11 +58,11 @@ Hibernate, делаем конверторы для типов LocalDateTime (Ja
 -  Работа с datatables через Ajax.
 -  Spring Security Test
 -  Encoding password
--  <a href="https://drive.google.com/file/d/0B9Ye2auQ_NsFNDlPZGdUNThzNUU/view">CSRF (добавление в проект защиты от межсайтовой подделки запроса)</a>
+-  CSRF (добавление в проект защиты от межсайтовой подделки запроса)
 -  form-login. Spring Security Taglib
 -  Handler interceptor
 -  Spring Exception Handling
 -  Смена локали
 -  Фильтрация JSON через @JsonView
 -  Защита от XSS (Cross Site Scripting)
--  <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFZkpVM19QWFBOQ2c">Деплой в Heroku</a>
+-  Деплой в Heroku
